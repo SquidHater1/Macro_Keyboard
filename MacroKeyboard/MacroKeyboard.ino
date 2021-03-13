@@ -76,7 +76,19 @@ void button2Macro() {
   Keyboard.releaseAll();
 }
 void button3Macro() {
-  //Macro code here
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_F10);
+  delay(50);
+  Keyboard.releaseAll();
+  Keyboard.press(KEY_DOWN_ARROW);
+  delay(50);
+  Keyboard.releaseAll();
+  Keyboard.press(KEY_DOWN_ARROW);
+  delay(50);
+  Keyboard.releaseAll();
+  Keyboard.press(KEY_RETURN);
+  delay(50);
+  Keyboard.releaseAll();
 }
 void button4Macro() {
   //Macro code here
