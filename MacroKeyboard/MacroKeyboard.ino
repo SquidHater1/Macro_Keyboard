@@ -37,18 +37,22 @@ void loop() {
     }
   } else if (buttonState2 == 1) {
     if (currentlyPressed == 0) {
+      button2Macro();
       currentlyPressed = 1;
     }
   } else if (buttonState3 == 1) {
     if (currentlyPressed == 0) {
+      button3Macro();
       currentlyPressed = 1;
     }
   } else if (buttonState4 == 1) {
     if (currentlyPressed == 0) {
+      button4Macro();
       currentlyPressed = 1;
     }
   } else if (buttonState5 == 1) {
     if (currentlyPressed == 0) {
+      button5Macro();
       currentlyPressed = 1;
     }
   } else {
@@ -65,14 +69,18 @@ void button1Macro() {
   Keyboard.releaseAll();
 }
 void button2Macro() {
-
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_LEFT_SHIFT);
+  Keyboard.press(KEY_ESC);
+  delay(50);
+  Keyboard.releaseAll();
 }
 void button3Macro() {
-
+  //Macro code here
 }
 void button4Macro() {
-
+  //Macro code here
 }
 void button5Macro() {
-
+  //Macro code here
 }
