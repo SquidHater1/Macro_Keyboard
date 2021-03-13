@@ -1,15 +1,16 @@
+#include <Keyboard.h>
 //set button pins
-const int button1 = 8;
-const int button2 = 9;
-const int button3 = 10;
-const int button4 = 11;
-const int button5 = 12;
+const int button1 = 2;
+const int button2 = 4;
+const int button3 = 6;
+const int button4 = 10;
+const int button5 = 14;
 //initialize all button states to 0
 int buttonState1 = 0, buttonState2 = 0, buttonState3 = 0, buttonState4 = 0, buttonState5 = 0;
 int currentlyPressed = 0;
+char ctrl = 128;
 void setup() {
-  Serial.begin(9600);
-  Serial.println("Starting Keyboard");
+  
 
 //Set the button pins to be inputs
   pinMode(button1,INPUT);
@@ -17,6 +18,9 @@ void setup() {
   pinMode(button3,INPUT);
   pinMode(button4,INPUT);
   pinMode(button5,INPUT);
+
+  Keyboard.begin();
+  delay(200);
 }
 
 void loop() {
@@ -28,27 +32,23 @@ void loop() {
 
   if(buttonState1 == 1){
     if(currentlyPressed == 0){
-      Serial.println("Button1 pressed");
+      button1Macro();
       currentlyPressed = 1;
     }
   }else if(buttonState2 == 1){
     if(currentlyPressed == 0){
-      Serial.println("Button2 pressed");
       currentlyPressed = 1;
     }
   }else if(buttonState3 == 1){
     if(currentlyPressed == 0){
-      Serial.println("Button3 pressed");
       currentlyPressed = 1;
     }
   }else if(buttonState4 == 1){
     if(currentlyPressed == 0){
-      Serial.println("Button4 pressed");
       currentlyPressed = 1;
     }
   }else if(buttonState5 == 1){
     if(currentlyPressed == 0){
-      Serial.println("Button5 pressed");
       currentlyPressed = 1;
     }
   }else{
@@ -58,7 +58,10 @@ void loop() {
 }
 
 void button1Macro(){
-  
+  Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.print("m");
+  delay(10);
+  Keyboard.releaseAll();
 }
 void button2Macro(){
   
