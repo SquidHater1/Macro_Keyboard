@@ -10,14 +10,14 @@ int buttonState1 = 0, buttonState2 = 0, buttonState3 = 0, buttonState4 = 0, butt
 int currentlyPressed = 0;
 char ctrl = 128;
 void setup() {
-  
 
-//Set the button pins to be inputs
-  pinMode(button1,INPUT);
-  pinMode(button2,INPUT);
-  pinMode(button3,INPUT);
-  pinMode(button4,INPUT);
-  pinMode(button5,INPUT);
+
+  //Set the button pins to be inputs
+  pinMode(button1, INPUT);
+  pinMode(button2, INPUT);
+  pinMode(button3, INPUT);
+  pinMode(button4, INPUT);
+  pinMode(button5, INPUT);
 
   Keyboard.begin();
   delay(200);
@@ -30,48 +30,49 @@ void loop() {
   buttonState4 = digitalRead(button4);
   buttonState5 = digitalRead(button5);
 
-  if(buttonState1 == 1){
-    if(currentlyPressed == 0){
+  if (buttonState1 == 1) {
+    if (currentlyPressed == 0) {
       button1Macro();
       currentlyPressed = 1;
     }
-  }else if(buttonState2 == 1){
-    if(currentlyPressed == 0){
+  } else if (buttonState2 == 1) {
+    if (currentlyPressed == 0) {
       currentlyPressed = 1;
     }
-  }else if(buttonState3 == 1){
-    if(currentlyPressed == 0){
+  } else if (buttonState3 == 1) {
+    if (currentlyPressed == 0) {
       currentlyPressed = 1;
     }
-  }else if(buttonState4 == 1){
-    if(currentlyPressed == 0){
+  } else if (buttonState4 == 1) {
+    if (currentlyPressed == 0) {
       currentlyPressed = 1;
     }
-  }else if(buttonState5 == 1){
-    if(currentlyPressed == 0){
+  } else if (buttonState5 == 1) {
+    if (currentlyPressed == 0) {
       currentlyPressed = 1;
     }
-  }else{
+  } else {
     currentlyPressed = 0;
   }
   delay(20);
 }
 
-void button1Macro(){
+void button1Macro() {
   Keyboard.press(KEY_LEFT_CTRL);
+  Keyboard.press(KEY_RIGHT_CTRL);
   Keyboard.print("m");
-  delay(10);
+  delay(50);
   Keyboard.releaseAll();
 }
-void button2Macro(){
-  
+void button2Macro() {
+
 }
-void button3Macro(){
-  
+void button3Macro() {
+
 }
-void button4Macro(){
-  
+void button4Macro() {
+
 }
-void button5Macro(){
-  
+void button5Macro() {
+
 }
