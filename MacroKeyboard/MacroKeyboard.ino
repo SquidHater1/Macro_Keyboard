@@ -8,7 +8,6 @@ const int button5 = 14;
 //initialize all button states to 0
 int buttonState1 = 0, buttonState2 = 0, buttonState3 = 0, buttonState4 = 0, buttonState5 = 0;
 int currentlyPressed = 0;
-char ctrl = 128;
 void setup() {
 
 
@@ -19,80 +18,115 @@ void setup() {
   pinMode(button4, INPUT);
   pinMode(button5, INPUT);
 
+  //Start the keyboard
   Keyboard.begin();
   delay(200);
 }
 
+
 void loop() {
+  //Get the state of every button
   buttonState1 = digitalRead(button1);
   buttonState2 = digitalRead(button2);
   buttonState3 = digitalRead(button3);
   buttonState4 = digitalRead(button4);
   buttonState5 = digitalRead(button5);
 
+  //check which button, if any, is currently pressed
   if (buttonState1 == 1) {
-    if (currentlyPressed == 0) {
-      button1Macro();
-      currentlyPressed = 1;
-    }
+     button1Macro();
   } else if (buttonState2 == 1) {
-    if (currentlyPressed == 0) {
       button2Macro();
-      currentlyPressed = 1;
-    }
   } else if (buttonState3 == 1) {
-    if (currentlyPressed == 0) {
       button3Macro();
-      currentlyPressed = 1;
-    }
   } else if (buttonState4 == 1) {
-    if (currentlyPressed == 0) {
       button4Macro();
-      currentlyPressed = 1;
-    }
   } else if (buttonState5 == 1) {
-    if (currentlyPressed == 0) {
       button5Macro();
-      currentlyPressed = 1;
-    }
   } else {
+    //let system know that all buttons have been released
     currentlyPressed = 0;
   }
+  //wait before looping again
   delay(20);
 }
 
 void button1Macro() {
-  Keyboard.press(KEY_LEFT_CTRL);
-  Keyboard.press(KEY_RIGHT_CTRL);
-  Keyboard.print("m");
-  delay(50);
-  Keyboard.releaseAll();
+  //Presses Left CTRL, Right CTRL, and "m", then releases
+  if (currentlyPressed == 0) {
+    currentlyPressed = 1;
+    Keyboard.press(KEY_LEFT_CTRL);
+    Keyboard.press(KEY_RIGHT_CTRL);
+    Keyboard.print("m");
+    delay(50);
+    Keyboard.releaseAll();
+  }
 }
+
 void button2Macro() {
-  Keyboard.press(KEY_LEFT_CTRL);
-  Keyboard.press(KEY_LEFT_SHIFT);
-  Keyboard.press(KEY_ESC);
-  delay(50);
-  Keyboard.releaseAll();
+  //Presses Left CRTL, Left Shift, and Escape
+  if (currentlyPressed == 0) {
+    currentlyPressed = 1;
+    Keyboard.press(KEY_LEFT_CTRL);
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press(KEY_ESC);
+    delay(50);
+    Keyboard.releaseAll();
+  }
 }
+  
 void button3Macro() {
-  Keyboard.press(KEY_LEFT_SHIFT);
-  Keyboard.press(KEY_F10);
-  delay(50);
-  Keyboard.releaseAll();
-  Keyboard.press(KEY_DOWN_ARROW);
-  delay(50);
-  Keyboard.releaseAll();
-  Keyboard.press(KEY_DOWN_ARROW);
-  delay(50);
-  Keyboard.releaseAll();
-  Keyboard.press(KEY_RETURN);
-  delay(50);
-  Keyboard.releaseAll();
+  //Searches google for selected text in google chrome
+  if (currentlyPressed == 0) {
+    currentlyPressed = 1;
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press(KEY_F10);
+    delay(50);
+    Keyboard.releaseAll();
+    Keyboard.press(KEY_DOWN_ARROW);
+    delay(50);
+    Keyboard.releaseAll();
+    Keyboard.press(KEY_DOWN_ARROW);
+    delay(50);
+    Keyboard.releaseAll();
+    Keyboard.press(KEY_RETURN);
+    delay(50);
+    Keyboard.releaseAll();
+  }
 }
+
+
 void button4Macro() {
-  //Macro code here
+  //Presses Windows Key, Left Shift, and Right (switches monitor selected window is on)
+  if (currentlyPressed == 0) {
+    currentlyPressed = 1;
+    Keyboard.press(KEY_LEFT_GUI);
+    Keyboard.press(KEY_LEFT_SHIFT);
+    Keyboard.press(KEY_RIGHT_ARROW);
+    delay(10);
+    Keyboard.releaseAll();
+  }
 }
 void button5Macro() {
-  //Macro code here
+  //Add template here
 }
+
+/* These are some templates for different kinds of macros
+
+/// Runs macro once when button first pressed
+  
+  if(currentlyPressed == 0) {
+    currentlyPressed = 1;
+    //Macro goes here
+  }
+
+
+/// Runs repeatedly until button is released again
+  
+  currentlyPressed = 1;
+  //Macro goes here
+
+
+
+
+ */
